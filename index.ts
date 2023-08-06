@@ -1,8 +1,8 @@
-import { Cache } from "./entities/Cache";
-import { Debounce } from "./entities/Debounce";
-import { Throttle } from "./entities/Throttle";
-import { DEFAULT } from "./utils/configs";
-import { Subscriber } from "./utils/types";
+import { Cache } from "./NetworkConfigs/entities/Cache";
+import { Debounce } from "./NetworkConfigs/entities/Debounce";
+import { Throttle } from "./NetworkConfigs/entities/Throttle";
+import { DEFAULT } from "./NetworkConfigs/utils/configs";
+import { Subscriber } from "./NetworkConfigs/utils/types";
 
 export default class NetworkConfigBuilder<P, R> {
   // network configutaions
