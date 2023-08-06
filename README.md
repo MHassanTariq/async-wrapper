@@ -1,5 +1,8 @@
 # Network-Config
 
-An async function wrapper
+This NPM package helps you create a wrapper around async functions and provides excessive functionalities like:
 
-Add Description!
+- Debounce
+- Throttle
+- Caching
+- Event Handling on specific actions
