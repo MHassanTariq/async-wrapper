@@ -17,7 +17,7 @@
     "wrapper",
     "debounce",
     "cache",
-    "throttle"
+    "retry"
   ],
   "author": {
     "name": "Muhammad Hassan Tariq",
