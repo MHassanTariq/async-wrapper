@@ -2,9 +2,15 @@
   "name": "network-configs",
   "version": "1.0.2",
   "description": "",
-  "main": "index.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "start": "ts-node ./index.ts"
+    "start": "ts-node ./index.ts",
+    "build": "tsup"
   },
   "repository": {
     "type": "git",
@@ -27,5 +33,8 @@
   "bugs": {
     "url": "https://github.com/MHassanTariq/Network-Config/issues"
   },
-  "homepage": "https://github.com/MHassanTariq/Network-Config/blob/master/README.md"
+  "homepage": "https://github.com/MHassanTariq/Network-Config/blob/master/README.md",
+  "dependencies": {
+    "tsup": "^7.2.0"
+  }
 }
