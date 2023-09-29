@@ -1,13 +1,13 @@
 import { Cache } from "./NetworkConfigs/entities/Cache";
 import { Debounce } from "./NetworkConfigs/entities/Debounce";
-import { Throttle } from "./NetworkConfigs/entities/Throttle";
+import { Retry } from "./NetworkConfigs/entities/Retry";
 import { DEFAULT } from "./NetworkConfigs/utils/configs";
 import { Subscriber } from "./NetworkConfigs/utils/types";
 
 export default class NetworkConfigBuilder<P, R> {
   // network configutaions
   private _debounce: number = DEFAULT.debounce;
-  private _throttle: number = DEFAULT.throttle;
+  private _retryLimit: number = DEFAULT.retryLimit;
   private _isCacheEnabled: boolean = DEFAULT.isCacheEnabled;
 
   // subscriber
@@ -19,8 +19,8 @@ export default class NetworkConfigBuilder<P, R> {
     return this;
   }
 
-  throttle(limit: number) {
-    this._throttle = limit;
+  retry(limit: number) {
+    this._retryLimit = limit;
     return this;
   }
 
@@ -42,7 +42,7 @@ export default class NetworkConfigBuilder<P, R> {
   build() {
     return new NetworkConfig<P, R>(
       this._debounce,
-      this._throttle,
+      this._retryLimit,
       this._isCacheEnabled,
       this._subscribers,
       this._metadata
@@ -52,23 +52,23 @@ export default class NetworkConfigBuilder<P, R> {
 
 class NetworkConfig<P, R> {
   private _debounce: Debounce<P, R>;
-  private _throttle: Throttle<P, R>;
+  private _retry: Retry<P, R>;
   private _cache: Cache<P, R>;
 
   constructor(
     debounce: number,
-    throttle: number,
+    retryLimit: number,
     isCacheEnabled: boolean,
     subscribers: Subscriber<R>[],
     metadata: any
   ) {
     this._debounce = new Debounce(debounce, subscribers, metadata);
-    this._throttle = new Throttle(throttle, subscribers, metadata);
+    this._retry = new Retry(retryLimit, subscribers, metadata);
     this._cache = new Cache(isCacheEnabled, subscribers, metadata);
   }
 
   async execute(asyncFunc: (args: P) => Promise<R>, args: P): Promise<R> {
-    return await this._throttle.execute(
+    return await this._retry.execute(
       () =>
         this._debounce.execute(
           () => this._cache.execute(asyncFunc, args),

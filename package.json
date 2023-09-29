@@ -1,6 +1,6 @@
 {
   "name": "network-configs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "index.ts",
   "scripts": {
@@ -17,7 +17,7 @@
     "wrapper",
     "debounce",
     "cache",
-    "throttle"
+    "retry"
   ],
   "author": {
     "name": "Muhammad Hassan Tariq",

@@ -1,21 +1,17 @@
 import { FailedEvents, Subscriber } from "../utils/types";
 import { NetworkConfigsBaseClass } from "../baseClasses/NetworkConfigsBaseClass";
 
-export class Throttle<P, R> extends NetworkConfigsBaseClass<P, R> {
-  private _throttleLimit: number;
+export class Retry<P, R> extends NetworkConfigsBaseClass<P, R> {
+  private _retryLimit: number;
 
-  constructor(
-    throttleLimit: number,
-    subscribers: Subscriber<R>[],
-    metadata: any
-  ) {
+  constructor(retryLimit: number, subscribers: Subscriber<R>[], metadata: any) {
     super(subscribers, metadata);
-    this._throttleLimit = throttleLimit;
+    this._retryLimit = retryLimit;
   }
 
   async execute(func: (args: P) => Promise<R>, args: P): Promise<R> {
     let err;
-    for (let i = 0; i < this._throttleLimit; i++) {
+    for (let i = 0; i < this._retryLimit; i++) {
       try {
         return await func(args);
       } catch (error) {
@@ -23,6 +19,6 @@ export class Throttle<P, R> extends NetworkConfigsBaseClass<P, R> {
       }
     }
     this.publishEvent({ event: FailedEvents.LimitReached, error: err });
-    throw Error(`Throttle Limit Reached for ${this._throttleLimit}!`);
+    throw Error(`Retry Limit Reached for ${this._retryLimit}!`);
   }
 }
