@@ -52,7 +52,7 @@ export default class NetworkConfigBuilder<P, R> {
 
 class NetworkConfig<P, R> {
   private _debounce: Debounce<P, R>;
-  private _retryLimit: Retry<P, R>;
+  private _retry: Retry<P, R>;
   private _cache: Cache<P, R>;
 
   constructor(
@@ -63,12 +63,12 @@ class NetworkConfig<P, R> {
     metadata: any
   ) {
     this._debounce = new Debounce(debounce, subscribers, metadata);
-    this._retryLimit = new Retry(retryLimit, subscribers, metadata);
+    this._retry = new Retry(retryLimit, subscribers, metadata);
     this._cache = new Cache(isCacheEnabled, subscribers, metadata);
   }
 
   async execute(asyncFunc: (args: P) => Promise<R>, args: P): Promise<R> {
-    return await this._retryLimit.execute(
+    return await this._retry.execute(
       () =>
         this._debounce.execute(
           () => this._cache.execute(asyncFunc, args),
