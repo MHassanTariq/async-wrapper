@@ -3,7 +3,7 @@ export enum SuccessfulEvents {
   CachedResolve = "CACHED_RESOLVE",
 }
 
-export enum FailedEvents {
+export const enum FailedEvents {
   Rejected = "REJECTED",
   LimitReached = "LIMIT_REACHED",
 }
