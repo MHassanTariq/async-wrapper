@@ -1,7 +1,7 @@
 import { FailedEvents, Subscriber } from "../utils/types";
-import { NetworkConfigsBaseClass } from "../baseClasses/NetworkConfigsBaseClass";
+import { AsyncWrapperBaseClass } from "../baseClasses/AsyncWrapperBaseClass";
 
-export class Debounce<P, R> extends NetworkConfigsBaseClass<P, R> {
+export class Debounce<P, R> extends AsyncWrapperBaseClass<P, R> {
   private _debouceDelay: number; // ms
   private _timeoutId?: ReturnType<typeof setTimeout>;
 

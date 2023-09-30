@@ -1,7 +1,7 @@
-import { NetworkConfigsBaseClass } from "../baseClasses/NetworkConfigsBaseClass";
+import { AsyncWrapperBaseClass } from "../baseClasses/AsyncWrapperBaseClass";
 import { Subscriber, SuccessfulEvents } from "../utils/types";
 
-export class Cache<P, R> extends NetworkConfigsBaseClass<P, R> {
+export class Cache<P, R> extends AsyncWrapperBaseClass<P, R> {
   private _isCacheEnabled: boolean;
   private _inputOutputMap = new Map<string, any>();
 
