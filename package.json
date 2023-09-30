@@ -34,7 +34,7 @@
     "url": "https://github.com/MHassanTariq/Network-Config/issues"
   },
   "homepage": "https://github.com/MHassanTariq/Network-Config/blob/master/README.md",
-  "dependencies": {
+  "devDependencies": {
     "tsup": "^7.2.0"
   }
 }
