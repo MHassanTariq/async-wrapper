@@ -1,7 +1,7 @@
 import { FailedEvents, Subscriber } from "../utils/types";
-import { AsyncWrapperBaseClass } from "../baseClasses/AsyncWrapperBaseClass";
+import { WrapperAsyncBaseClass } from "../baseClasses/WrapperAsyncBaseClass";
 
-export class Debounce<P, R> extends AsyncWrapperBaseClass<P, R> {
+export class Debounce<P, R> extends WrapperAsyncBaseClass<P, R> {
   private _debouceDelay: number; // ms
   private _timeoutId?: ReturnType<typeof setTimeout>;
 

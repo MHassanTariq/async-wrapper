@@ -1,7 +1,7 @@
-import { AsyncWrapperBaseClass } from "../baseClasses/AsyncWrapperBaseClass";
+import { WrapperAsyncBaseClass } from "../baseClasses/WrapperAsyncBaseClass";
 import { Subscriber, SuccessfulEvents } from "../utils/types";
 
-export class Cache<P, R> extends AsyncWrapperBaseClass<P, R> {
+export class Cache<P, R> extends WrapperAsyncBaseClass<P, R> {
   private _isCacheEnabled: boolean;
   private _inputOutputMap = new Map<string, any>();
 

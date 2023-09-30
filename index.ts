@@ -5,7 +5,7 @@ import {
   SuccessfulEvents,
   FailedEventTypes,
 } from "./src/utils/types";
-import AsyncWrapperBuilder from "./src/index";
+import WrapperAsyncBuilder from "./src/index";
 
 export {
   FailedEvents,
@@ -14,4 +14,4 @@ export {
   SuccessfulEvents,
   FailedEventTypes,
 };
-export default AsyncWrapperBuilder;
+export default WrapperAsyncBuilder;
