@@ -5,7 +5,7 @@ import {
 } from "../utils/types";
 import { Publisher } from "../entities/Publisher";
 
-export abstract class NetworkConfigsBaseClass<P, R> {
+export abstract class AsyncWrapperBaseClass<P, R> {
   private _publisher: Publisher<R>;
 
   abstract execute(func: (args: P) => Promise<R>, args: P): Promise<R>;

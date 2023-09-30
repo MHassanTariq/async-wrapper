@@ -4,7 +4,7 @@ import { Retry } from "./entities/Retry";
 import { DEFAULT } from "./utils/configs";
 import { Subscriber } from "./utils/types";
 
-export default class NetworkConfigBuilder<P, R> {
+export default class AsyncWrapperBuilder<P, R> {
   // network configutaions
   private _debounce: number = DEFAULT.debounce;
   private _retryLimit: number = DEFAULT.retryLimit;
@@ -40,7 +40,7 @@ export default class NetworkConfigBuilder<P, R> {
   }
 
   build() {
-    return new NetworkConfig<P, R>(
+    return new AsyncWrapper<P, R>(
       this._debounce,
       this._retryLimit,
       this._isCacheEnabled,
@@ -50,7 +50,7 @@ export default class NetworkConfigBuilder<P, R> {
   }
 }
 
-class NetworkConfig<P, R> {
+class AsyncWrapper<P, R> {
   private _debounce: Debounce<P, R>;
   private _retry: Retry<P, R>;
   private _cache: Cache<P, R>;
