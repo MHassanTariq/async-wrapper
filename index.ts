@@ -4,8 +4,8 @@ import {
   SuccessfulEventTypes,
   SuccessfulEvents,
   FailedEventTypes,
-} from "./NetworkConfigs/utils/types";
-import NetworkConfigBuilder from "./NetworkConfigs/index";
+} from "./src/utils/types";
+import AsyncWrapperBuilder from "./src/index";
 
 export {
   FailedEvents,
@@ -14,4 +14,4 @@ export {
   SuccessfulEvents,
   FailedEventTypes,
 };
-export default NetworkConfigBuilder;
+export default AsyncWrapperBuilder;
