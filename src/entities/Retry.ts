@@ -1,7 +1,7 @@
 import { FailedEvents, Subscriber } from "../utils/types";
-import { AsyncWrapperBaseClass } from "../baseClasses/AsyncWrapperBaseClass";
+import { WrapperAsyncBaseClass } from "../baseClasses/WrapperAsyncBaseClass";
 
-export class Retry<P, R> extends AsyncWrapperBaseClass<P, R> {
+export class Retry<P, R> extends WrapperAsyncBaseClass<P, R> {
   private _retryLimit: number;
 
   constructor(retryLimit: number, subscribers: Subscriber<R>[], metadata: any) {
