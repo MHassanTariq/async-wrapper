@@ -1,6 +1,6 @@
 {
   "name": "wrapper-async",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Creates an async-wrapper for your async functions.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
