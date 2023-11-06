@@ -1,4 +1,4 @@
-# Async-Wrapper
+# Wrapper-Async
 
 You can read the documentation from [official site](https://mhassantariq.github.io/async-wrapper/).
 
